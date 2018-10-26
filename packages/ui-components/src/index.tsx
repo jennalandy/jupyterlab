@@ -5,13 +5,25 @@ import * as React from 'react';
 import {
   Button as BPButton,
   Icon as BPIcon,
+  Collapse as BPCollapse,
   InputGroup as BPInputGroup,
   IButtonProps,
   IIconProps,
+  ICollapseProps,
   IInputGroupProps
+  // Classes as BPCoreClasses
 } from '@blueprintjs/core';
-import { Select as BPSelect, ISelectProps } from '@blueprintjs/select';
-import { ButtonStyle, IconStyle, InputGroupStyle } from './style';
+import {
+  Select as BPSelect,
+  ISelectProps
+  // Classes as BPSelectClasses
+} from '@blueprintjs/select';
+import {
+  ButtonStyle,
+  IconStyle,
+  InputGroupStyle,
+  InputGroupActionStyle
+} from './style';
 // import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
@@ -27,12 +39,29 @@ export const Button = (props: IButtonProps) => (
   />
 );
 
-export const InputGroup = (props: IInputGroupProps) => (
-  <BPInputGroup
-    className={joinClassNames(InputGroupStyle(props), props.className)}
-    {...props}
-  />
-);
+export const InputGroup = (
+  props: IInputGroupProps & { rightIcon: IIconProps['icon'] }
+) => {
+  if (props.rightIcon) {
+    return (
+      <BPInputGroup
+        className={joinClassNames(InputGroupStyle(props), props.className)}
+        rightElement={
+          <div className={InputGroupActionStyle({ position: 'right' })}>
+            <Icon className={IconStyle()} icon={props.rightIcon} />
+          </div>
+        }
+        {...props}
+      />
+    );
+  }
+  return (
+    <BPInputGroup
+      className={joinClassNames(InputGroupStyle(props), props.className)}
+      {...props}
+    />
+  );
+};
 
 export const Icon = (props: IIconProps) => (
   <BPIcon
@@ -41,6 +70,10 @@ export const Icon = (props: IIconProps) => (
   />
 );
 
+export const Collapse = (props: ICollapseProps) => <BPCollapse {...props} />;
+
 export const Select = ({ className, ...props }: ISelectProps<any>) => (
   <BPSelect className={`jp-Select ${className}`} {...props} />
 );
+
+export { Intent } from '@blueprintjs/core';
