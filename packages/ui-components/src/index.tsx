@@ -11,7 +11,8 @@ import {
   IInputGroupProps
 } from '@blueprintjs/core';
 import { Select as BPSelect, ISelectProps } from '@blueprintjs/select';
-import '../style/index.css';
+import { ButtonStyle, IconStyle, InputGroupStyle } from './style';
+// import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
 
