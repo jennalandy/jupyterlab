@@ -7,10 +7,12 @@ import {
   Icon as BPIcon,
   Collapse as BPCollapse,
   InputGroup as BPInputGroup,
+  HTMLSelect as BPHTMLSelect,
   IButtonProps,
   IIconProps,
   ICollapseProps,
-  IInputGroupProps
+  IInputGroupProps,
+  IHTMLSelectProps
   // Classes as BPCoreClasses
 } from '@blueprintjs/core';
 import {
@@ -22,7 +24,9 @@ import {
   ButtonStyle,
   IconStyle,
   InputGroupStyle,
-  InputGroupActionStyle
+  InputGroupActionStyle,
+  HTMLSelectStyle,
+  SelectStyle
 } from './style';
 // import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
@@ -72,8 +76,18 @@ export const Icon = (props: IIconProps) => (
 
 export const Collapse = (props: ICollapseProps) => <BPCollapse {...props} />;
 
-export const Select = ({ className, ...props }: ISelectProps<any>) => (
-  <BPSelect className={`jp-Select ${className}`} {...props} />
+export const HTMLSelect = (props: IHTMLSelectProps) => (
+  <BPHTMLSelect
+    className={joinClassNames(HTMLSelectStyle(props), props.className)}
+    {...props}
+  />
+);
+
+export const Select = (props: ISelectProps<any>) => (
+  <BPSelect
+    className={joinClassNames(SelectStyle(props), props.className)}
+    {...props}
+  />
 );
 
 export { Intent } from '@blueprintjs/core';

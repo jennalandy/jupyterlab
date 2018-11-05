@@ -1,5 +1,10 @@
-import { IButtonProps, IIconProps, IInputGroupProps } from '@blueprintjs/core';
-
+import {
+  IButtonProps,
+  IIconProps,
+  IInputGroupProps,
+  IHTMLSelectProps
+} from '@blueprintjs/core';
+import { ISelectProps } from '@blueprintjs/select';
 import { NestedCSSProperties } from 'typestyle/lib/types';
 import { style } from 'typestyle/lib';
 
@@ -30,6 +35,10 @@ export function InputGroupStyle(props?: IInputGroupProps): string {
     $nest: {
       '&>input': {
         boxSizing: 'border-box'
+      },
+      '&>input:focus': {
+        boxShadow:
+          'inset 0 0 0 1px rgba(19, 124, 189, 0.3), inset 0 0 0 3px rgba(19, 124, 189, 0.3)'
       }
     }
   });
@@ -51,4 +60,22 @@ export function InputGroupActionStyle(props: {
     lineHeight: '30px',
     fontSize: '20px'
   });
+}
+
+export function HTMLSelectStyle(props: IHTMLSelectProps): string {
+  return style({
+    $nest: {
+      '& select': {
+        height: 24,
+        fontSize: 'var(--jp-ui-font-size1)',
+        lineHeight: '14px',
+        borderRadius: 0,
+        display: 'block'
+      }
+    }
+  });
+}
+
+export function SelectStyle(props: ISelectProps<any>): string {
+  return style({});
 }
