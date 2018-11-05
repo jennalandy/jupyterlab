@@ -6,7 +6,7 @@ import {
 } from '@blueprintjs/core';
 import { ISelectProps } from '@blueprintjs/select';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { style } from 'typestyle/lib';
+import { style, classes } from 'typestyle/lib';
 
 const globalStyles: NestedCSSProperties = {
   outline: 'none',
@@ -14,9 +14,9 @@ const globalStyles: NestedCSSProperties = {
   borderRadius: 'var(--jp-border-radius)'
 };
 
-export function ButtonStyle(props?: IButtonProps): string {
+export function ButtonStyle(props: IButtonProps): string {
   const color = props.minimal ? { color: 'unset !important' } : {};
-  return style({
+  const className = style({
     ...globalStyles,
     ...color,
     borderRadius: 'var(--jp-border-radius)',
@@ -27,10 +27,11 @@ export function ButtonStyle(props?: IButtonProps): string {
     // height: '32px',
     // letterSpacing: '0.8px'
   });
+  return classes(className, props.className);
 }
 
-export function InputGroupStyle(props?: IInputGroupProps): string {
-  return style({
+export function InputGroupStyle(props: IInputGroupProps): string {
+  const className = style({
     borderRadius: 0,
     $nest: {
       '&>input': {
@@ -42,6 +43,7 @@ export function InputGroupStyle(props?: IInputGroupProps): string {
       }
     }
   });
+  return classes(className, props.className);
 }
 
 export function IconStyle(props?: IIconProps): string {
@@ -63,7 +65,7 @@ export function InputGroupActionStyle(props: {
 }
 
 export function HTMLSelectStyle(props: IHTMLSelectProps): string {
-  return style({
+  const className = style({
     $nest: {
       '& select': {
         height: 24,
@@ -74,8 +76,10 @@ export function HTMLSelectStyle(props: IHTMLSelectProps): string {
       }
     }
   });
+  return classes(className, props.className);
 }
 
 export function SelectStyle(props: ISelectProps<any>): string {
-  return style({});
+  const className = style({});
+  return classes(className, props.className);
 }

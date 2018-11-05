@@ -32,15 +32,8 @@ import {
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
 
-function joinClassNames(...classNames: (string | undefined)[]): string {
-  return classNames.join(' ').trim();
-}
-
 export const Button = (props: IButtonProps) => (
-  <BPButton
-    className={joinClassNames(ButtonStyle(props), props.className)}
-    {...props}
-  />
+  <BPButton className={ButtonStyle(props)} {...props} />
 );
 
 export const InputGroup = (
@@ -49,7 +42,7 @@ export const InputGroup = (
   if (props.rightIcon) {
     return (
       <BPInputGroup
-        className={joinClassNames(InputGroupStyle(props), props.className)}
+        className={InputGroupStyle(props)}
         rightElement={
           <div className={InputGroupActionStyle({ position: 'right' })}>
             <Icon className={IconStyle()} icon={props.rightIcon} />
@@ -59,35 +52,21 @@ export const InputGroup = (
       />
     );
   }
-  return (
-    <BPInputGroup
-      className={joinClassNames(InputGroupStyle(props), props.className)}
-      {...props}
-    />
-  );
+  return <BPInputGroup className={InputGroupStyle(props)} {...props} />;
 };
 
 export const Icon = (props: IIconProps) => (
-  <BPIcon
-    className={joinClassNames(IconStyle(props), props.className)}
-    {...props}
-  />
+  <BPIcon className={IconStyle(props)} {...props} />
 );
 
 export const Collapse = (props: ICollapseProps) => <BPCollapse {...props} />;
 
 export const HTMLSelect = (props: IHTMLSelectProps) => (
-  <BPHTMLSelect
-    className={joinClassNames(HTMLSelectStyle(props), props.className)}
-    {...props}
-  />
+  <BPHTMLSelect className={HTMLSelectStyle(props)} {...props} />
 );
 
 export const Select = (props: ISelectProps<any>) => (
-  <BPSelect
-    className={joinClassNames(SelectStyle(props), props.className)}
-    {...props}
-  />
+  <BPSelect className={SelectStyle(props)} {...props} />
 );
 
 export { Intent } from '@blueprintjs/core';
