@@ -4,22 +4,28 @@
 import * as React from 'react';
 import {
   Button as BPButton,
+  IButtonProps as IBPButtonProps
+} from '@blueprintjs/core/lib/esm/components/button/buttons';
+import {
   Icon as BPIcon,
+  IIconProps
+} from '@blueprintjs/core/lib/esm/components/icon/icon';
+import {
   Collapse as BPCollapse,
+  ICollapseProps
+} from '@blueprintjs/core/lib/esm/components/collapse/collapse';
+import {
   InputGroup as BPInputGroup,
+  IInputGroupProps as IBPInputGroupProps
+} from '@blueprintjs/core/lib/esm/components/forms/inputGroup';
+import {
   HTMLSelect as BPHTMLSelect,
-  IButtonProps as IBPButtonProps,
-  IIconProps,
-  ICollapseProps,
-  IInputGroupProps as IBPInputGroupProps,
   IHTMLSelectProps
-  // Classes as BPCoreClasses
-} from '@blueprintjs/core';
+} from '@blueprintjs/core/lib/esm/components/html-select/htmlSelect';
 import {
   Select as BPSelect,
   ISelectProps
-  // Classes as BPSelectClasses
-} from '@blueprintjs/select';
+} from '@blueprintjs/select/lib/esm/components/select/select';
 import {
   ButtonStyle,
   IconStyle,
@@ -31,6 +37,8 @@ import {
 // import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
+
+export { Intent } from '@blueprintjs/core/lib/esm/common/intent';
 
 interface IButtonProps extends IBPButtonProps {
   title?: string;
@@ -44,9 +52,7 @@ export const Button = (props: IButtonProps) => (
   <BPButton className={ButtonStyle(props)} {...props} />
 );
 
-export const InputGroup = (
-  props: IInputGroupProps & { rightIcon: IIconProps['icon'] }
-) => {
+export const InputGroup = (props: IInputGroupProps) => {
   if (props.rightIcon) {
     return (
       <BPInputGroup
@@ -76,5 +82,3 @@ export const HTMLSelect = (props: IHTMLSelectProps) => (
 export const Select = (props: ISelectProps<any>) => (
   <BPSelect className={SelectStyle(props)} {...props} />
 );
-
-export { Intent } from '@blueprintjs/core';
