@@ -83,18 +83,6 @@ button.jp-ToolbarButtonComponent {
   min-height: unset;
 }
 
-/* button.jp-ToolbarButtonComponent:focus {
-  background: var(--jp-layout-color2);
-} */
-
-/* button.jp-ToolbarButtonComponent:enabled:hover {
-  background: var(--jp-layout-color2);
-} */
-
-/* button.jp-ToolbarButtonComponent:enabled:active {
-  background: var(--jp-layout-color3);
-} */
-
 button.jp-ToolbarButtonComponent:disabled {
   opacity: 0.4;
 }

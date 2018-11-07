@@ -170,7 +170,7 @@ function ListEntry(props: ListEntry.IProperties): React.ReactElement<any> {
             </Button>
           )}
           {ListModel.entryHasUpdate(entry) && (
-            <Button // An install action will update the extension:
+            <Button
               onClick={() => props.performAction('install', entry)}
               minimal
               small
@@ -570,11 +570,6 @@ export class ExtensionView extends VDomRenderer<ListModel> {
           key="search-section"
           isOpen={false}
           header={model.query ? 'Search Results' : 'Discover'}
-          // onCollapse={(collapsed: boolean) => {
-          //   if (!collapsed && model.query === null) {
-          //     model.query = '';
-          //   }
-          // }}
         >
           {searchContent}
         </CollapsibleSection>

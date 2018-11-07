@@ -390,7 +390,7 @@ export function ToolbarButtonComponent(props: ToolbarButtonComponent.IProps) {
       }
       disabled={props.enabled === false}
       onClick={handleClick}
-      // text={props.tooltip || props.iconLabel}
+      title={props.tooltip || props.iconLabel}
       minimal
     >
       {props.iconClassName && (

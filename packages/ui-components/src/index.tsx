@@ -8,10 +8,10 @@ import {
   Collapse as BPCollapse,
   InputGroup as BPInputGroup,
   HTMLSelect as BPHTMLSelect,
-  IButtonProps,
+  IButtonProps as IBPButtonProps,
   IIconProps,
   ICollapseProps,
-  IInputGroupProps,
+  IInputGroupProps as IBPInputGroupProps,
   IHTMLSelectProps
   // Classes as BPCoreClasses
 } from '@blueprintjs/core';
@@ -31,6 +31,14 @@ import {
 // import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
+
+interface IButtonProps extends IBPButtonProps {
+  title?: string;
+}
+
+interface IInputGroupProps extends IBPInputGroupProps {
+  rightIcon?: IIconProps['icon'];
+}
 
 export const Button = (props: IButtonProps) => (
   <BPButton className={ButtonStyle(props)} {...props} />
