@@ -214,7 +214,6 @@ function LineColComponent(
     />
   );
 }
-
 /**
  * A widget implementing a line/column status item.
  */
@@ -227,7 +226,6 @@ export class LineCol extends VDomRenderer<LineCol.Model> {
     this.model = new LineCol.Model();
     this.addClass(interactiveItem);
   }
-
   /**
    * Render the status item.
    */
@@ -244,7 +242,6 @@ export class LineCol extends VDomRenderer<LineCol.Model> {
       );
     }
   }
-
   /**
    * A click handler for the widget.
    */
@@ -261,14 +258,12 @@ export class LineCol extends VDomRenderer<LineCol.Model> {
         />
       )
     );
-
     this._popup = showPopup({
       body: body,
       anchor: this,
       align: 'right'
     });
   }
-
   /**
    * Handle submission for the widget.
    */
@@ -277,10 +272,8 @@ export class LineCol extends VDomRenderer<LineCol.Model> {
     this._popup!.dispose();
     this.model!.editor!.focus();
   }
-
   private _popup: Popup | null = null;
 }
-
 /**
  * A namespace for LineCol statics.
  */
@@ -300,7 +293,6 @@ export namespace LineCol {
       if (oldEditor) {
         oldEditor.model.selections.changed.disconnect(this._onSelectionChanged);
       }
-
       const oldState = this._getAllState();
       this._editor = editor;
       if (!this._editor) {
@@ -308,29 +300,24 @@ export namespace LineCol {
         this._line = 1;
       } else {
         this._editor.model.selections.changed.connect(this._onSelectionChanged);
-
         const pos = this._editor.getCursorPosition();
         this._column = pos.column + 1;
         this._line = pos.line + 1;
       }
-
       this._triggerChange(oldState, this._getAllState());
     }
-
     /**
      * The current line of the model.
      */
     get line(): number {
       return this._line;
     }
-
     /**
      * The current column of the model.
      */
     get column(): number {
       return this._column;
     }
-
     /**
      * React to a change in the cursors of the current editor.
      */
@@ -339,14 +326,11 @@ export namespace LineCol {
       const pos = this.editor!.getCursorPosition();
       this._line = pos.line + 1;
       this._column = pos.column + 1;
-
       this._triggerChange(oldState, this._getAllState());
     };
-
     private _getAllState(): [number, number] {
       return [this._line, this._column];
     }
-
     private _triggerChange(
       oldState: [number, number],
       newState: [number, number]
@@ -355,7 +339,6 @@ export namespace LineCol {
         this.stateChanged.emit(void 0);
       }
     }
-
     private _line: number = 1;
     private _column: number = 1;
     private _editor: CodeEditor.IEditor | null = null;
