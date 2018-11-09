@@ -6,9 +6,11 @@ import { INotebookModel, Notebook } from '.';
 
 import { Cell } from '@jupyterlab/cells';
 
-import { IconItem } from '@jupyterlab/statusbar';
+import { Icon } from '@jupyterlab/ui-components';
 
 import { toArray } from '@phosphor/algorithm';
+
+import { style } from 'typestyle/lib';
 
 /**
  * Determine the notebook trust status message.
@@ -51,7 +53,9 @@ function NotebookTrustComponent(
   props: NotebookTrustComponent.IProps
 ): React.ReactElement<NotebookTrustComponent.IProps> {
   const source = cellTrust(props)[1];
-  return <IconItem source={source} offset={{ x: 0, y: 2 }} />;
+  return (
+    <Icon icon={source} className={style({ backgroundPositionY: '2px' })} />
+  );
 }
 
 /**

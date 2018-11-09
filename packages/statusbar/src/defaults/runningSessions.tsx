@@ -3,6 +3,8 @@
 
 import React from 'react';
 
+import { Icon } from '@jupyterlab/ui-components';
+
 import { VDomRenderer, VDomModel } from '@jupyterlab/apputils';
 
 import {
@@ -13,7 +15,7 @@ import {
   SessionManager
 } from '@jupyterlab/services';
 
-import { GroupItem, IconItem, interactiveItem, TextItem } from '..';
+import { GroupItem, interactiveItem, TextItem } from '..';
 
 /**
  * Half spacing between subitems in a status item.
@@ -34,11 +36,13 @@ function RunningSessionsComponent(
     <GroupItem spacing={HALF_SPACING} onClick={props.handleClick}>
       <GroupItem spacing={HALF_SPACING}>
         <TextItem source={props.terminals} />
-        <IconItem source={'terminal-item'} offset={{ x: 1, y: 3 }} />
+        <Icon icon={'terminal'} jp={true} />
+        {/* <IconItem source={'terminal-item'} offset={{ x: 1, y: 3 }} /> */}
       </GroupItem>
       <GroupItem spacing={HALF_SPACING}>
         <TextItem source={props.kernels} />
-        <IconItem source={'kernel-item'} offset={{ x: 0, y: 2 }} />
+        <Icon icon={'kernel'} />
+        {/* <IconItem source={'kernel-item'} offset={{ x: 0, y: 2 }} /> */}
       </GroupItem>
     </GroupItem>
   );

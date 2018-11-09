@@ -32,7 +32,7 @@ const BREADCRUMB_CLASS = 'jp-BreadCrumbs';
 /**
  * The class name added to add the home icon for the breadcrumbs
  */
-const BREADCRUMB_HOME = 'jp-HomeIcon';
+const BREADCRUMB_HOME = 'jp-Home';
 
 /**
  * The class named associated to the ellipses icon

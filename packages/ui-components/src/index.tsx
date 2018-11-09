@@ -8,8 +8,10 @@ import {
 } from '@blueprintjs/core/lib/esm/components/button/buttons';
 import {
   Icon as BPIcon,
+  IconName as BPIconName,
   IIconProps
 } from '@blueprintjs/core/lib/esm/components/icon/icon';
+import { IconNames } from '@blueprintjs/icons';
 import {
   Collapse as BPCollapse,
   ICollapseProps
@@ -59,7 +61,7 @@ export const InputGroup = (props: IInputGroupProps) => {
         className={InputGroupStyle(props)}
         rightElement={
           <div className={InputGroupActionStyle({ position: 'right' })}>
-            <Icon className={IconStyle()} icon={props.rightIcon} />
+            <BPIcon className={IconStyle()} icon={props.rightIcon} />
           </div>
         }
         {...props}
@@ -69,9 +71,39 @@ export const InputGroup = (props: IInputGroupProps) => {
   return <BPInputGroup className={InputGroupStyle(props)} {...props} />;
 };
 
-export const Icon = (props: IIconProps) => (
-  <BPIcon className={IconStyle(props)} {...props} />
-);
+// export const Icon = (props: IIconProps) => {
+//   return(<BPIcon className={IconStyle(props)} {...props} />)
+// };
+
+export const Icon = (props: {
+  icon: string;
+  jp?: boolean;
+  className?: string;
+}) => {
+  console.log(IconNames);
+  console.log(Object.keys(IconNames).indexOf(props.icon.toUpperCase()));
+  if (
+    Object.keys(IconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
+    !props.jp
+  ) {
+    console.log('hasname');
+    return <BPIcon icon={props.icon as BPIconName} />;
+  } else {
+    console.log(props.icon);
+    return (
+      <span
+        className={'bp3-icon bp3-icon-jl' + props.icon + ' ' + props.className}
+        style={{
+          backgroundImage: 'var(--jp-icon-' + props.icon + ')',
+          backgroundSize: '16px',
+          backgroundRepeat: 'no-repeat',
+          width: '16px',
+          height: '16px'
+        }}
+      />
+    );
+  }
+};
 
 export const Collapse = (props: ICollapseProps) => <BPCollapse {...props} />;
 
