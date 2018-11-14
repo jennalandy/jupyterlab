@@ -11,7 +11,7 @@ import {
   IconName as BPIconName,
   IIconProps
 } from '@blueprintjs/core/lib/esm/components/icon/icon';
-import { IconNames } from '@blueprintjs/icons';
+import { IconNames as BPIconNames } from '@blueprintjs/icons';
 import {
   Collapse as BPCollapse,
   ICollapseProps
@@ -77,24 +77,20 @@ export const InputGroup = (props: IInputGroupProps) => {
 
 export const Icon = (props: {
   icon: string;
-  jp?: boolean;
+  jp?: boolean; //uses jupyterlab icon even if there's a blueprint one with the same name
   className?: string;
 }) => {
-  console.log(IconNames);
-  console.log(Object.keys(IconNames).indexOf(props.icon.toUpperCase()));
   if (
-    Object.keys(IconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
+    Object.keys(BPIconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
     !props.jp
   ) {
-    console.log('hasname');
     return <BPIcon icon={props.icon as BPIconName} />;
   } else {
-    console.log(props.icon);
     return (
       <span
-        className={'bp3-icon bp3-icon-jl' + props.icon + ' ' + props.className}
+        className={`bp3-icon bp3-icon-jl${props.icon} ${props.className}`}
         style={{
-          backgroundImage: 'var(--jp-icon-' + props.icon + ')',
+          backgroundImage: `var(--jp-icon-${props.icon})`,
           backgroundSize: '16px',
           backgroundRepeat: 'no-repeat',
           width: '16px',

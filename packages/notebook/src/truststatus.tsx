@@ -54,7 +54,9 @@ function NotebookTrustComponent(
 ): React.ReactElement<NotebookTrustComponent.IProps> {
   const source = cellTrust(props)[1];
   return (
-    <Icon icon={source} className={style({ backgroundPositionY: '2px' })} />
+    <div className={style({ lineHeight: '26px' })}>
+      <Icon icon={source} />
+    </div>
   );
 }
 
@@ -111,14 +113,12 @@ export class NotebookTrustStatus extends VDomRenderer<
     }
     this.node.title = cellTrust(this.model)[0];
     return (
-      <div>
-        <NotebookTrustComponent
-          allCellsTrusted={this.model.trustedCells === this.model.totalCells}
-          activeCellTrusted={this.model.activeCellTrusted}
-          totalCells={this.model.totalCells}
-          trustedCells={this.model.trustedCells}
-        />
-      </div>
+      <NotebookTrustComponent
+        allCellsTrusted={this.model.trustedCells === this.model.totalCells}
+        activeCellTrusted={this.model.activeCellTrusted}
+        totalCells={this.model.totalCells}
+        trustedCells={this.model.trustedCells}
+      />
     );
   }
 }
