@@ -37,12 +37,10 @@ function RunningSessionsComponent(
       <GroupItem spacing={HALF_SPACING}>
         <TextItem source={props.terminals} />
         <Icon icon={'terminal'} jp={true} />
-        {/* <IconItem source={'terminal-item'} offset={{ x: 1, y: 3 }} /> */}
       </GroupItem>
       <GroupItem spacing={HALF_SPACING}>
         <TextItem source={props.kernels} />
         <Icon icon={'kernel'} />
-        {/* <IconItem source={'kernel-item'} offset={{ x: 0, y: 2 }} /> */}
       </GroupItem>
     </GroupItem>
   );
