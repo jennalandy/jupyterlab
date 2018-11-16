@@ -39,6 +39,8 @@ import {
 // import '../style/index.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '../style/blueprint.css';
+import '../style/index.css';
+import { Color } from 'csstype';
 
 export { Intent } from '@blueprintjs/core/lib/esm/common/intent';
 
@@ -50,9 +52,9 @@ interface IInputGroupProps extends IBPInputGroupProps {
   rightIcon?: IIconProps['icon'];
 }
 
-export const Button = (props: IButtonProps) => (
-  <BPButton className={ButtonStyle(props)} {...props} />
-);
+export const Button = (props: IButtonProps) => {
+  return <BPButton className={ButtonStyle(props)} {...props} />;
+};
 
 export const InputGroup = (props: IInputGroupProps) => {
   if (props.rightIcon) {
@@ -77,22 +79,57 @@ export const InputGroup = (props: IInputGroupProps) => {
 
 export const Icon = (props: {
   icon: string;
+  color?: Color;
   jp?: boolean; //uses jupyterlab icon even if there's a blueprint one with the same name
   className?: string;
 }) => {
+  //constIcons are two-tone and remain the same color no matter the placement
+  const constIcons: string[] = [
+    'TERMINAL',
+    'CONSOLE',
+    'IMAGE',
+    'IMAGE-SELECTED',
+    'LAUNCHER',
+    'QUESTION-MARK',
+    'SETTINGS',
+    'TEXT-EDITOR',
+    'BOOK',
+    'BOOK-SELECTED'
+  ];
   if (
     Object.keys(BPIconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
     !props.jp
   ) {
     return <BPIcon icon={props.icon as BPIconName} />;
-  } else {
+  } else if (constIcons.indexOf(props.icon.toUpperCase()) >= 0) {
     return (
       <span
-        className={`bp3-icon bp3-icon-jl${props.icon} ${props.className}`}
+        className={`bp3-icon jp-icon jp-icon-${props.icon} ${
+          props.className ? props.className : ''
+        }`}
         style={{
           backgroundImage: `var(--jp-icon-${props.icon})`,
           backgroundSize: '16px',
-          backgroundRepeat: 'no-repeat',
+          width: '16px',
+          height: '16px'
+        }}
+      />
+    );
+  } else {
+    const color: string = props.color
+      ? props.color.toString()
+      : 'var(--jp-icon-color)';
+    console.log(color);
+    return (
+      <span
+        className={`bp3-icon jp-icon jp-icon-${props.icon} ${
+          props.className ? props.className : ''
+        }`}
+        style={{
+          backgroundColor: color,
+          WebkitMaskImage: `var(--jp-icon-${props.icon})`,
+          WebkitMaskSize: '16px',
+          WebkitMaskRepeat: 'no-repeat',
           width: '16px',
           height: '16px'
         }}

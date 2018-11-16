@@ -3,8 +3,14 @@
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
 
+@import './variables.css';
+@import './urls.css';
+
 .jp-Button {
 }
 
 .jp-Select {
+}
+
+.jp-icon {
 }

@@ -55,7 +55,7 @@ function NotebookTrustComponent(
   const source = cellTrust(props)[1];
   return (
     <div className={style({ lineHeight: '26px' })}>
-      <Icon icon={source} />
+      <Icon icon={source} color="#EEEEEE" />
     </div>
   );
 }
