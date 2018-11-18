@@ -8,8 +8,7 @@ import {
 } from '@blueprintjs/core/lib/esm/components/button/buttons';
 import {
   Icon as BPIcon,
-  IconName as BPIconName,
-  IIconProps
+  IconName as BPIconName
 } from '@blueprintjs/core/lib/esm/components/icon/icon';
 import { IconNames as BPIconNames } from '@blueprintjs/icons';
 import {
@@ -49,7 +48,8 @@ interface IButtonProps extends IBPButtonProps {
 }
 
 interface IInputGroupProps extends IBPInputGroupProps {
-  rightIcon?: IIconProps['icon'];
+  rightIcon?: string;
+  jpIcon?: boolean;
 }
 
 export const Button = (props: IButtonProps) => {
@@ -62,9 +62,17 @@ export const InputGroup = (props: IInputGroupProps) => {
       <BPInputGroup
         className={InputGroupStyle(props)}
         rightElement={
-          <div className={InputGroupActionStyle({ position: 'right' })}>
-            <BPIcon className={IconStyle()} icon={props.rightIcon} />
-          </div>
+          typeof props.rightIcon == 'string' ? (
+            <div className={InputGroupActionStyle({ position: 'right' })}>
+              <Icon
+                className={IconStyle()}
+                icon={props.rightIcon}
+                jpIcon={props.jpIcon}
+              />
+            </div>
+          ) : (
+            props.rightIcon
+          )
         }
         {...props}
       />
@@ -80,7 +88,7 @@ export const InputGroup = (props: IInputGroupProps) => {
 export const Icon = (props: {
   icon: string;
   color?: Color;
-  jp?: boolean; //uses jupyterlab icon even if there's a blueprint one with the same name
+  jpIcon?: boolean; //uses jupyterlab icon even if there's a blueprint one with the same name
   className?: string;
 }) => {
   //constIcons are two-tone and remain the same color no matter the placement
@@ -98,7 +106,7 @@ export const Icon = (props: {
   ];
   if (
     Object.keys(BPIconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
-    !props.jp
+    !props.jpIcon
   ) {
     return <BPIcon icon={props.icon as BPIconName} />;
   } else if (constIcons.indexOf(props.icon.toUpperCase()) >= 0) {
@@ -119,7 +127,6 @@ export const Icon = (props: {
     const color: string = props.color
       ? props.color.toString()
       : 'var(--jp-icon-color)';
-    console.log(color);
     return (
       <span
         className={`bp3-icon jp-icon jp-icon-${props.icon} ${

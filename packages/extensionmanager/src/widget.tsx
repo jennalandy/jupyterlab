@@ -46,6 +46,7 @@ export class SearchBar extends React.Component<
           onChange={this.handleChange}
           value={this.state.value}
           rightIcon="search"
+          jpIcon={true}
         />
       </div>
     );
