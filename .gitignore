@@ -42,5 +42,6 @@ examples/app/themes
 examples/app/schemas
 
 lerna-debug.log
+yarn-error.log
 
 junit.xml
