@@ -37,7 +37,8 @@
     "@phosphor/messaging": "^1.2.2",
     "react": "~16.4.2",
     "react-paginate": "^5.2.3",
-    "semver": "^5.5.0"
+    "semver": "^5.5.0",
+    "typestyle": "^2.0.1"
   },
   "devDependencies": {
     "@types/react-paginate": "^4.3.2",

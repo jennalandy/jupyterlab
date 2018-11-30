@@ -1,9 +1,5 @@
-import {
-  IButtonProps,
-  IIconProps,
-  IInputGroupProps,
-  IHTMLSelectProps
-} from '@blueprintjs/core';
+import { IIconProps, IHTMLSelectProps } from '@blueprintjs/core';
+import { IInputGroupProps, IButtonProps } from './index';
 import { ISelectProps } from '@blueprintjs/select';
 import { NestedCSSProperties } from 'typestyle/lib/types';
 import { style, classes } from 'typestyle/lib';

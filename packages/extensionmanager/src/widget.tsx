@@ -11,6 +11,8 @@ import { Button, InputGroup, Collapse } from '@jupyterlab/ui-components';
 
 import * as React from 'react';
 
+import { style, classes } from 'typestyle/lib';
+
 import ReactPaginate from 'react-paginate';
 
 import { ListModel, IEntry, Action } from './model';
@@ -36,16 +38,32 @@ export class SearchBar extends React.Component<
   /**
    * Render the list view using the virtual DOM.
    */
-  render(): React.ReactNode {
+  render() {
+    const iconClassName: string = style({
+      marginLeft: '5px',
+      marginTop: '5px'
+    });
+    const className: string = style({
+      $nest: {
+        '& .bp3-input-action': {
+          backgroundColor: 'var(--jp-brand-color1)',
+          width: '30px',
+          height: '30px'
+        }
+      }
+    });
     return (
       <div className="jp-extensionmanager-search-bar">
         <InputGroup
-          className="jp-extensionmanager-search-wrapper"
+          className={classes('jp-extensionmanager-search-wrapper', className)}
           type="text"
           placeholder={this.props.placeholder}
           onChange={this.handleChange}
           value={this.state.value}
           rightIcon="search"
+          rightIconSize="20px"
+          rightIconClassName={iconClassName}
+          rightIconColor={'white'}
           jpIcon={true}
         />
       </div>

@@ -41,14 +41,21 @@ import '../style/blueprint.css';
 import '../style/index.css';
 import { Color } from 'csstype';
 
+import { JPIconName } from './iconType';
+
+import { classes } from 'typestyle/lib';
+
 export { Intent } from '@blueprintjs/core/lib/esm/common/intent';
 
-interface IButtonProps extends IBPButtonProps {
+export interface IButtonProps extends IBPButtonProps {
   title?: string;
 }
 
-interface IInputGroupProps extends IBPInputGroupProps {
+export interface IInputGroupProps extends IBPInputGroupProps {
   rightIcon?: string;
+  rightIconSize?: string;
+  rightIconClassName?: string;
+  rightIconColor?: Color;
   jpIcon?: boolean;
 }
 
@@ -57,37 +64,46 @@ export const Button = (props: IButtonProps) => {
 };
 
 export const InputGroup = (props: IInputGroupProps) => {
+  const {
+    rightIcon,
+    rightIconSize,
+    rightIconClassName,
+    rightIconColor,
+    jpIcon,
+    ...rest
+  } = props;
   if (props.rightIcon) {
     return (
       <BPInputGroup
         className={InputGroupStyle(props)}
         rightElement={
-          typeof props.rightIcon == 'string' ? (
-            <div className={InputGroupActionStyle({ position: 'right' })}>
-              <Icon
-                className={IconStyle()}
-                icon={props.rightIcon}
-                jpIcon={props.jpIcon}
-              />
-            </div>
-          ) : (
-            props.rightIcon
-          )
+          props.rightIcon ? (
+            typeof props.rightIcon == 'string' ? (
+              <div className={InputGroupActionStyle({ position: 'right' })}>
+                <Icon
+                  className={classes(IconStyle(), props.rightIconClassName)}
+                  icon={props.rightIcon}
+                  jpIcon={props.jpIcon}
+                  size={props.rightIconSize}
+                  color={props.rightIconColor}
+                />
+              </div>
+            ) : (
+              props.rightIcon
+            )
+          ) : null
         }
-        {...props}
+        {...rest}
       />
     );
   }
-  return <BPInputGroup className={InputGroupStyle(props)} {...props} />;
+  return <BPInputGroup className={InputGroupStyle(props)} {...rest} />;
 };
 
-// export const Icon = (props: IIconProps) => {
-//   return(<BPIcon className={IconStyle(props)} {...props} />)
-// };
-
 export const Icon = (props: {
-  icon: string;
+  icon: JPIconName | BPIconName;
   color?: Color;
+  size?: string; // defualts to 16px
   jpIcon?: boolean; //uses jupyterlab icon even if there's a blueprint one with the same name
   className?: string;
 }) => {
@@ -104,11 +120,16 @@ export const Icon = (props: {
     'BOOK',
     'BOOK-SELECTED'
   ];
+  const size: string = props.size ? props.size : '16px';
+
+  //if blueprint icon, return blueprint icon
   if (
     Object.keys(BPIconNames).indexOf(props.icon.toUpperCase()) >= 0 &&
     !props.jpIcon
   ) {
     return <BPIcon icon={props.icon as BPIconName} />;
+
+    //if const icon, return span with backgorund image
   } else if (constIcons.indexOf(props.icon.toUpperCase()) >= 0) {
     return (
       <span
@@ -117,12 +138,14 @@ export const Icon = (props: {
         }`}
         style={{
           backgroundImage: `var(--jp-icon-${props.icon})`,
-          backgroundSize: '16px',
-          width: '16px',
-          height: '16px'
+          backgroundSize: size,
+          width: size,
+          height: size
         }}
       />
     );
+
+    //if not const or blueprint, return span with webkit mask to change color
   } else {
     const color: string = props.color
       ? props.color.toString()
@@ -135,10 +158,10 @@ export const Icon = (props: {
         style={{
           backgroundColor: color,
           WebkitMaskImage: `var(--jp-icon-${props.icon})`,
-          WebkitMaskSize: '16px',
+          WebkitMaskSize: size,
           WebkitMaskRepeat: 'no-repeat',
-          width: '16px',
-          height: '16px'
+          width: size,
+          height: size
         }}
       />
     );
