@@ -33,7 +33,8 @@
   "dependencies": {
     "@blueprintjs/core": "^3.9.0",
     "@blueprintjs/icons": "^3.3.0",
-    "@blueprintjs/select": "^3.3.0"
+    "@blueprintjs/select": "^3.3.0",
+    "react": "~16.4.2"
   },
   "devDependencies": {
     "@types/react": "~16.4.13",
