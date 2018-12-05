@@ -33,6 +33,10 @@ all of MD as it is not optimized for dense, information rich UIs.
    * https://material-components-web.appspot.com/elevation.html
    */
 
+  --jp-icon-color: #e0e0e0;
+  --jp-icon-color-inverse: #616161;
+  --jp-icon-color-selected: #ffffff;
+
   /* The dark theme shadows need a bit of work, but this will probably also require work on the core layout
    * colors used in the theme as well. */
   --jp-shadow-base-lightness: 32;

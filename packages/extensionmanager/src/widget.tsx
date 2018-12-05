@@ -45,7 +45,13 @@ export class SearchBar extends React.Component<
           placeholder={this.props.placeholder}
           onChange={this.handleChange}
           value={this.state.value}
-          rightIcon="search"
+          backgroundColor="var(--jp-brand-color1)"
+          rightIconOptions={{
+            icon: 'search',
+            size: '20px',
+            color: 'white',
+            jpIcon: true
+          }}
         />
       </div>
     );

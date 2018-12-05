@@ -2813,6 +2813,10 @@ csstype@^2.4.0:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
 
+csstype@~2.5.8:
+  version "2.5.8"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.8.tgz#4ce5aa16ea0d562ef9105fa3ae2676f199586a35"
+
 csv-spectrum@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/csv-spectrum/-/csv-spectrum-1.0.0.tgz#591ac9ff48ad4f3eb4338457bc9801b349e3d628"
