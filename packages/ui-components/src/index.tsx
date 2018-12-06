@@ -4,28 +4,17 @@
 import * as React from 'react';
 import {
   Button as BPButton,
-  IButtonProps as IBPButtonProps
-} from '@blueprintjs/core/lib/esm/components/button/buttons';
-import {
-  Icon as BPIcon,
-  IIconProps
-} from '@blueprintjs/core/lib/esm/components/icon/icon';
-import {
-  Collapse as BPCollapse,
-  ICollapseProps
-} from '@blueprintjs/core/lib/esm/components/collapse/collapse';
-import {
+  IButtonProps as IBPButtonProps,
   InputGroup as BPInputGroup,
-  IInputGroupProps as IBPInputGroupProps
-} from '@blueprintjs/core/lib/esm/components/forms/inputGroup';
-import {
+  IInputGroupProps as IBPInputGroupProps,
+  Icon as BPIcon,
+  IIconProps,
+  Collapse as BPCollapse,
   HTMLSelect as BPHTMLSelect,
-  IHTMLSelectProps
-} from '@blueprintjs/core/lib/esm/components/html-select/htmlSelect';
-import {
-  Select as BPSelect,
-  ISelectProps
-} from '@blueprintjs/select/lib/esm/components/select/select';
+  IHTMLSelectProps,
+  ICollapseProps
+} from '@blueprintjs/core';
+import { Select as BPSelect, ISelectProps } from '@blueprintjs/select';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '../style/index.css';
