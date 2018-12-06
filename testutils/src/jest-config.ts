@@ -11,7 +11,12 @@ module.exports = function(name: string, baseDir: string) {
     },
     setupTestFrameworkScriptFile: '@jupyterlab/testutils/lib/jest-script.js',
     setupFiles: ['@jupyterlab/testutils/lib/jest-shim.js'],
-    testPathIgnorePatterns: ['/dev_mode/', '/lib/', '/node_modules/'],
+    testPathIgnorePatterns: [
+      '/dev_mode/',
+      '/lib/',
+      '/node_modules/',
+      '/node_modules/@blueprintjs'
+    ],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     rootDir: path.resolve(path.join(baseDir, '..', '..')),
     reporters: ['default', 'jest-junit'],
