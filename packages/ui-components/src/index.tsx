@@ -27,15 +27,24 @@ import { Color } from 'csstype';
 
 export { Intent } from '@blueprintjs/core/lib/esm/common/intent';
 
+/**
+ * The interface for button component.
+ */
 interface IButtonProps extends IBPButtonProps {
   title?: string;
 }
 
+/**
+ * The interface for input group component.
+ */
 interface IInputGroupProps extends IBPInputGroupProps {
   rightIconOptions?: IIconProps;
   backgroundColor?: Color;
 }
 
+/**
+ * The interface for icon component.
+ */
 interface IIconProps {
   icon: JPIconName | BPIconName;
   color?: Color;
@@ -44,6 +53,9 @@ interface IIconProps {
   className?: string;
 }
 
+/**
+ * The functional component for button.
+ */
 export const Button = (props: IButtonProps) => (
   <BPButton
     {...props}
@@ -55,6 +67,9 @@ export const Button = (props: IButtonProps) => (
   />
 );
 
+/**
+ * The functional component for input group.
+ */
 export const InputGroup = (props: IInputGroupProps) => {
   if (props.rightIconOptions) {
     const { rightIconOptions, backgroundColor, ...rest } = props;
@@ -86,6 +101,9 @@ export const InputGroup = (props: IInputGroupProps) => {
   );
 };
 
+/**
+ * The functional component for icon.
+ */
 export const Icon = (props: IIconProps) => {
   const size = props.size ? props.size : '16px';
   const color = props.color ? props.color : 'var(--jp-icon-color)';
@@ -133,8 +151,14 @@ export const Icon = (props: IIconProps) => {
   }
 };
 
+/**
+ * The functional component for collapse.
+ */
 export const Collapse = (props: ICollapseProps) => <BPCollapse {...props} />;
 
+/**
+ * The functional component for html select.
+ */
 export const HTMLSelect = (props: IHTMLSelectProps) => (
   <BPHTMLSelect
     {...props}
@@ -142,6 +166,9 @@ export const HTMLSelect = (props: IHTMLSelectProps) => (
   />
 );
 
+/**
+ * The functional component for select.
+ */
 export const Select = (props: ISelectProps<any>) => (
   <BPSelect
     {...props}
