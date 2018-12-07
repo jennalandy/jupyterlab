@@ -1,11 +1,3 @@
-.kernel-item {
-  background-image: url('./images/kernel-icon.svg');
-}
-
-.terminal-item {
-  background-image: url('./images/terminal-icon.svg');
-}
-
 .not-trusted-item {
   background-image: url('./images/not-trusted-icon.svg');
 }
@@ -20,4 +12,13 @@
 
 .status-bar-icon {
   background-image: url('./images/status-bar-icon.svg');
+}
+
+:root {
+  --jp-icon-kernel: url('./images/kernel-icon.svg');
+  --jp-icon-terminal: url('./images/terminal-icon.svg');
+  --jp-icon-not-trusted: url('./images/not-trusted-icon.svg');
+  --jp-icon-trusted: url('./images/trusted-icon.svg');
+  --jp-icon-line-form: url('./images/line-form.svg');
+  --jp-icon-status: url('./images/status-bar-icon.svg');
 }

@@ -260,3 +260,7 @@
 .jp-mod-presentationMode .jp-Notebook .jp-Cell .jp-OutputPrompt {
   flex: 0 0 110px;
 }
+
+.jp-trust-dont-icon {
+  margin-top: 3px;
+}
