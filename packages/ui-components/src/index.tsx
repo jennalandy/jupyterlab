@@ -68,7 +68,7 @@ export const InputGroup = (props: IInputGroupProps) => {
             style={
               backgroundColor && {
                 backgroundColor: backgroundColor,
-                height: rightIconOptions.size ? rightIconOptions.size : '16px'
+                height: '18px'
               }
             }
           >
